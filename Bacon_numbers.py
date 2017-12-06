@@ -53,6 +53,7 @@ def getLinks(articleUrl, recursionLevel):
         insertLink(pageId, insertPageIfNotExists(link.attrs['href']))
         if link not in pages:
             newArticle = link.attrs['href']
+            print("The next article is: " + newArticle)   #just help me to check info on display
             pages.add(newArticle)
             getLinks(newArticle, recursionLevel+1)
             
