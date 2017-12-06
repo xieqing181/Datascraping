@@ -14,9 +14,10 @@ random.seed(datetime.datetime.now())
 
 '''INSERT INTO pages'''
 def store(title, content):
-    cur.execute("INSERT INTO pages (title, content) VALUES (\"%s\", \"%s\")", 
-        (title, content))
     try:
+        cur.execute("INSERT INTO pages (title, content) VALUES (\"%s\", \"%s\")", 
+            (title, content))
+
         cur.connection.commit()
     except UnicodeEncodeError:
         print("There is a letter can't be encoded as Unicode")
@@ -41,7 +42,7 @@ links = getLinks("/wiki/Kevin_Bacon")
 i = 1
 try:
     #if len(links) > 0:
-    if len(links) > 0 & i <= 20:
+    while len(links) > 0 and i < 20:
         i = i+1
         newarcticleUrl = links[random.randint(0, len(links)-1)].attrs['href']
         print("Next arcticle is:" + newarcticleUrl)
