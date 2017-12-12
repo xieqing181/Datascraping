@@ -49,7 +49,7 @@ def getLinks(articleUrl, recursionLevel):
     soup = BeautifulSoup(html, "lxml")
     
     pageId = insertPageIfNotExists(articleUrl)
-    for link in soup.findAll("a", href=re.compile("^(/wiki/)(?!:).*$")):
+    for link in soup.findAll("a", href=re.compile("^(/wiki/)((?!:).)*$")):
         insertLink(pageId, insertPageIfNotExists(link.attrs['href']))
         if link not in pages:
             newArticle = link.attrs['href']
