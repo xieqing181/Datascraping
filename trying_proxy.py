@@ -22,7 +22,7 @@ try:
     page = WebDriverWait(driver,30).until(EC.presence_of_element_located((By.XPATH, "//head")))
     
 finally:
-    print(driver.find_element_by_xpath("//head").text)
+    print(driver.find_element_by_id("//head").text)
 
 
 searchbox = driver.find_element_by_id("lst-ib")
